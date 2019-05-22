@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {fetchPosts, fetchUser} from '../actions';
+import {fetchPosts, fetchPostsAndUsers} from '../actions';
 import {connect} from 'react-redux';
 import UserHeader from './UserHeader';
 
@@ -9,7 +9,7 @@ class PostList extends Component {
     this.state = { hasError: false };
   }
   componentDidMount() {
-    this.props.fetchPosts(this.cb)
+    this.props.fetchPostsAndUsers(this.cb)
   }
   
   static getDerivedStateFromError(error) {
@@ -55,4 +55,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, {fetchPosts})(PostList);  
+export default connect(mapStateToProps, {fetchPostsAndUsers})(PostList);  

@@ -4,12 +4,11 @@ import {fetchUser} from "../actions";
 
 class UserHeader extends React.Component {
   componentDidMount() {
-    this.props.fetchUser(this.props.userId)
+    //this.props.fetchUser(this.props.userId)
   }
 
   render() {
-    const user = this.props.users && this.props.users.find(user => user.id === this.props.userId)
-    
+    const {user} = this.props;
     if(!user) {
       return null;
     }
@@ -19,10 +18,9 @@ class UserHeader extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
+const mapStateToProps = (state, ownProps) => {
   return {
-    users: state.users.data
+    user: state.users.find(user => user.id === ownProps.userId)
   }
 }
 
