@@ -20,6 +20,8 @@ export const fetchPostsAndUsers = (cb) => async (dispatch, getState) => {
   console.log(getState().posts)
   const userIds = [...new Set(getState().posts.data.map((user) => user.userId))];
   console.log(userIds);
+  var setVal = new Set(getState().posts.data.map((user) => user.userId));
+  console.log(setVal.entries(v => v));
   // const promises = userIds.map(id => fetch(`https://jsonplaceholder.typicode.com/users/${id}`));
   // Promise.all(promises).then(resp => Promise.all(resp.map(r => r.json()))).then(json => console.log(json))
 
